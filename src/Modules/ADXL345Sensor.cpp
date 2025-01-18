@@ -1,5 +1,7 @@
 #include "Modules/ADXL345Sensor.h"
 
+// Source utilisation et méthodes librairie: adafruit/Adafruit ADXL345@^1.3.4 depuis "PIO Home/Librairies".
+
 ADXL345Sensor::ADXL345Sensor() 
   : m_axeX(DEFAULT_ZERO_F),
     m_axeY(DEFAULT_ZERO_F),
