@@ -1,6 +1,6 @@
 #pragma once
 #include <Arduino.h>
-#include "Sensors/ADXL345Sensor.h"
+#include "Modules/ADXL345Sensor.h"
 
 class Program {
 private:

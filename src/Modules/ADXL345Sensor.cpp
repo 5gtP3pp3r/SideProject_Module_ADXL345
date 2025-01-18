@@ -1,4 +1,4 @@
-#include "Sensors/ADXL345Sensor.h"
+#include "Modules/ADXL345Sensor.h"
 
 ADXL345Sensor::ADXL345Sensor() 
   : m_axeX(DEFAULT_ZERO_F),
