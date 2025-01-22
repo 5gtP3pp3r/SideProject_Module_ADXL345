@@ -15,7 +15,7 @@ private:
     float m_axeX;               // Hummmm. Les 3 axes pouraient être représenté par un vecteur...
     float m_axeY;
     float m_axeZ;               // L'axe Z sera l'axe important puisqu'il représente l'axe vertical.
-    Adafruit_ADXL345_Unified m_ADXL345 = Adafruit_ADXL345_Unified();
+    Adafruit_ADXL345_Unified m_ADXL345;
 
     uint64_t m_lastReadTime;
     uint16_t m_interval;

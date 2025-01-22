@@ -6,9 +6,9 @@ Program::Program()
     m_axeY(EMPTY),
     m_axeZ(EMPTY),    
     m_lastReadTime(DEFAULT_ZERO),
-    m_interval(INTERVAL_1) {                 // 1 sec
-    this->m_ADXL345 = new ADXL345Sensor();
-    Serial.begin(SERIAL_SPEED);
+    m_interval(INTERVAL_1) {                    // 1 sec               
+        this->m_ADXL345 = new ADXL345Sensor();
+    
 }
 
 void Program::getADXL345Values() {

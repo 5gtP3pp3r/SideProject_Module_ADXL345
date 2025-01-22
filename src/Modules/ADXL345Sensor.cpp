@@ -8,7 +8,8 @@ ADXL345Sensor::ADXL345Sensor()
     m_axeZ(DEFAULT_ZERO_F),
     m_lastReadTime(DEFAULT_ZERO),
     m_interval(INTERVAL_500) { 
-        if(!m_ADXL345.begin()) {
+        Wire.begin();
+        if(!m_ADXL345.begin(ADXL_ADD)) {
             Serial.println("Incapable de démarrer le capteur ADXL345. Vérifiez l'adresse et le câblage.");
             while(true);
         } else {
