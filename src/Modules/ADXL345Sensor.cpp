@@ -7,10 +7,13 @@ ADXL345Sensor::ADXL345Sensor()
   : m_axeX(DEFAULT_ZERO_F),
     m_axeY(DEFAULT_ZERO_F),
     m_axeZ(DEFAULT_ZERO_F),
+    m_maxAccelX(DEFAULT_ZERO_F),
+    m_maxAccelY(DEFAULT_ZERO_F),
+    m_maxAccelZ(DEFAULT_ZERO_F),
     m_lastReadTime(DEFAULT_ZERO),
     m_interval(INTERVAL_500) { 
         Wire.begin();
-        if(!m_ADXL345.begin()) {
+        if(!this->m_ADXL345.begin()) {
             Serial.println("Incapable de démarrer le capteur ADXL345. Vérifiez l'adresse et le câblage.");
             while(true);
         } else {
@@ -25,6 +28,17 @@ void ADXL345Sensor::setMembresValues() {
     this->m_axeX = event.acceleration.x;
     this->m_axeY = event.acceleration.y;
     this->m_axeZ = event.acceleration.z;
+}
+void ADXL345Sensor::setMaxValues() {
+    if (this->m_axeX > this->m_maxAccelX) {
+        this->m_maxAccelX = m_axeX;
+    }
+    if (this->m_axeY > this->m_maxAccelY) {
+        this->m_maxAccelY = m_axeY;
+    }
+    if (this->m_axeZ > this->m_maxAccelZ) {
+        this->m_maxAccelZ = m_axeZ;
+    }
 }
 
 // Retour en String, exemple: 21,15m/s² Soit 2,2G
@@ -60,9 +74,20 @@ float ADXL345Sensor::getAxeZg() {
     return String(this->m_axeZ / G_CONST, 1).toFloat();
 }
 
+float ADXL345Sensor::getMaxAccelX() {
+    return this->m_maxAccelX;
+}
+float ADXL345Sensor::getMaxAccelY() {
+    return this->m_maxAccelY;
+}
+float ADXL345Sensor::getMaxAccelZ() {
+    return this->m_maxAccelZ;
+}
+
 void ADXL345Sensor::tick() {
     if (this->m_lastReadTime + this->m_interval < millis()) {       // Pour l'instant, lecture au 1/2 seconde
         this->m_lastReadTime = millis();
         setMembresValues();
+        setMaxValues();
     }
 }
