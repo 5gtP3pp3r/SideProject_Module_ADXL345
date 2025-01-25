@@ -33,7 +33,7 @@
 #define KILOPASCAL 1000.0f
 
 // ADXL345
-#define ADXL_ADD 0x53                   // SD0 sur GND. SI sur VCC: 0x1D
+#define ADXL_ADD 0x56                  // SD0 sur GND. SI sur VCC: 0x1D
 #define MS2 "m/s²"                      // Accélération en mètre par seconde au carré. La gravité est une accélération constante de 9.81m/s² soit 1G.
 #define G_CONST 9.81f                   // Constante De la gravité.
 

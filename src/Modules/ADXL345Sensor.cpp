@@ -1,6 +1,7 @@
 #include "Modules/ADXL345Sensor.h"
 
 // Source utilisation et méthodes librairie: adafruit/Adafruit ADXL345@^1.3.4 depuis "PIO Home/Librairies".
+// Aussi guidé par cette exemple: https://www.youtube.com/watch?v=s5Ne0hIaJws  
 
 ADXL345Sensor::ADXL345Sensor() 
   : m_axeX(DEFAULT_ZERO_F),
@@ -9,7 +10,7 @@ ADXL345Sensor::ADXL345Sensor()
     m_lastReadTime(DEFAULT_ZERO),
     m_interval(INTERVAL_500) { 
         Wire.begin();
-        if(!m_ADXL345.begin(ADXL_ADD)) {
+        if(!m_ADXL345.begin()) {
             Serial.println("Incapable de démarrer le capteur ADXL345. Vérifiez l'adresse et le câblage.");
             while(true);
         } else {
